@@ -11,4 +11,4 @@ generates:
     config:
       contextType: BaseContext
       mappers:
-        Comment: "@prisma/client#Comment"
+        Comment: "../resolvers/types#CommentParent"
