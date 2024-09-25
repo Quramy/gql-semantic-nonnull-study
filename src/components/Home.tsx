@@ -1,4 +1,5 @@
 import { graphql, useLazyLoadQuery } from "react-relay";
+import { Comment } from "./Comment";
 import type { Home_Query } from "./__generated__/Home_Query.graphql";
 
 const query = graphql`
@@ -6,6 +7,10 @@ const query = graphql`
     posts {
       id
       title
+      comments {
+        id
+        ...Comment_comment
+      }
     }
   }
 `;
@@ -16,8 +21,17 @@ export function Home() {
     <>
       <h1>Posts</h1>
       <ul>
-        {data.posts.map(p => (
-          <li key={p.id}>{p.title}</li>
+        {data.posts.map(post => (
+          <li key={post.id}>
+            <header>{post.title}</header>
+            <ul>
+              {post.comments.map(comment => (
+                <li key={comment.id}>
+                  <Comment comment={comment} />
+                </li>
+              ))}
+            </ul>
+          </li>
         ))}
       </ul>
     </>

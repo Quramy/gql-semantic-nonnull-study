@@ -10,3 +10,5 @@ generates:
       - typescript-resolvers
     config:
       contextType: BaseContext
+      mappers:
+        Comment: "@prisma/client#Comment"

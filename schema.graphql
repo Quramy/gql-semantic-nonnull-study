@@ -1,4 +1,10 @@
 # This is auto generated file. Don't edit.
+schema {
+  query: Query
+}
+
+directive @semanticNonNull(levels: [Int] = [0]) on FIELD_DEFINITION
+
 interface Node {
   id: ID!
 }
@@ -13,6 +19,9 @@ type Post implements Node {
 type Comment implements Node {
   id: ID!
   body: String!
+  nullableField: String
+  strictField: String!
+  semanticNonNullField: String @semanticNonNull
 }
 
 type Query {

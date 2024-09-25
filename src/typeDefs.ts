@@ -1,4 +1,6 @@
 export const typeDefs = /* GraphQL */ `
+  directive @semanticNonNull(levels: [Int] = [0]) on FIELD_DEFINITION
+
   interface Node {
     id: ID!
   }
@@ -13,6 +15,9 @@ export const typeDefs = /* GraphQL */ `
   type Comment implements Node {
     id: ID!
     body: String!
+    nullableField: String
+    strictField: String!
+    semanticNonNullField: String @semanticNonNull
   }
 
   type Query {
