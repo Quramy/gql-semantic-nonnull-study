@@ -10,7 +10,15 @@ initialize({ prisma });
 await prisma.comment.deleteMany();
 await prisma.post.deleteMany();
 
-await PostFactory.create({ comments: { create: await CommentFactory.buildList(3) } });
+await PostFactory.create({
+  comments: {
+    create: [
+      await CommentFactory.build({ star: 1 }),
+      await CommentFactory.build({ star: 2 }),
+      await CommentFactory.build({ star: 3 }),
+    ],
+  },
+});
 await PostFactory.createList(4);
 
 console.log(await prisma.post.count());
