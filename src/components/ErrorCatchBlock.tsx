@@ -3,14 +3,17 @@ import { useFragment, graphql } from "react-relay";
 import type { ErrorCatchBlock_Comment$key } from "./__generated__/ErrorCatchBlock_Comment.graphql";
 import type { ErrorCatchBlock_Child_Comment$key } from "./__generated__/ErrorCatchBlock_Child_Comment.graphql";
 
+// Workaround for https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/70682
 type Result<T, S> =
   | {
       readonly ok: true;
+      readonly errors: never;
       readonly value: T;
     }
   | {
       readonly ok: false;
-      readonly value: S;
+      readonly errors: S;
+      readonly value: never;
     };
 
 const fragment = graphql`
