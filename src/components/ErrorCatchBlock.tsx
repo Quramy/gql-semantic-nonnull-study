@@ -1,7 +1,6 @@
 import { ErrorBoundary } from "react-error-boundary";
 import { useFragment, graphql } from "react-relay";
 import type { ErrorCatchBlock_Comment$key } from "./__generated__/ErrorCatchBlock_Comment.graphql";
-import type { ErrorCatchBlock_Child_Comment$key } from "./__generated__/ErrorCatchBlock_Child_Comment.graphql";
 
 // Workaround for https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/70682
 type Result<T, S> =
